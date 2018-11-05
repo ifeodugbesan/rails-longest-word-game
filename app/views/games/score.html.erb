@@ -1,0 +1,19 @@
+<div class="container text-center">
+  <h1>FIND THE WORD</h1>
+  <div class="row">
+    <div class="col-xs-offset-2">
+      <% @words.each do |letter| %>
+        <div class="col-xs-1">
+          <p class="letter"><%= letter %></p>
+        </div>
+        <% end %>
+    </div>
+</div>
+<% if @real_word["found"] == true && @result == true %>
+  <p><%= "Congratulations! #{@guess.join.upcase} is a valid English word!" %></p>
+  <% elsif @real_word["found"] == false && @result == true %>
+  <p><%= "Sorry, #{@guess.join} is not a valid English word!" %></p>
+  <% else %>
+  <p><%= "Sorry but #{@guess.join} can't be formed from the grid!" %></p>
+<% end %>
+<a><%= link_to 'Play again', new_path %></a>
